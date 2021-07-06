@@ -1,0 +1,36 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("net.serenity-bdd:serenity-gradle-plugin:2.0.52")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'net.serenity-bdd.aggregator'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+ext {
+    serenityVersion = '2.0.54'
+    serenityCucumberVersion = '1.9.20'
+
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile "net.serenity-bdd:serenity-core:$rootProject.ext.serenityVersion"
+    testCompile "net.serenity-bdd:serenity-junit:$rootProject.ext.serenityVersion"
+    testCompile "net.serenity-bdd:serenity-cucumber:$rootProject.ext.serenityCucumberVersion"
+    testCompile "net.serenity-bdd:serenity-screenplay:$rootProject.ext.serenityVersion"
+    implementation "net.serenity-bdd:serenity-screenplay-webdriver:$rootProject.ext.serenityVersion"
+    compile "net.serenity-bdd:serenity-ensure:$rootProject.ext.serenityVersion"
+    testCompile 'org.slf4j:slf4j-simple:1.7.7'
+}
